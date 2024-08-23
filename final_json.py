@@ -53,7 +53,6 @@ from screeninfo import get_monitors # type: ignore
 for monitor in get_monitors():
     print(f"Width: {monitor.width}, Height: {monitor.height}")
 
-
 class ProgX:
     def __init__(self, z):
         self.widgets_ = []
@@ -73,6 +72,7 @@ class ProgX:
 
         self.MH2 = int((monitor.height-200))
         self.MW2 = int((monitor.width - 200))
+        return None
       
 #first screen.In the future the file will be selected here
     def main_start(self):        
@@ -97,6 +97,7 @@ class ProgX:
         write_button.place(x=x_position, y=y_position, width=button_width, height=button_height)
         
         self.root.mainloop()
+        return None
    
 #Basis screen settings. 
     def main_screen(self):
@@ -129,6 +130,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
         self.senior_screen()
         
         self.root_x.mainloop()
+        return None
       
 #<senior screen> Basis screen. Data is printed on this screen. I don't want the window to close and open when I refresh the screen. 
 # That's why I defined the screen settings in a different function. Only data is printed in this function.
@@ -220,6 +222,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
         # 2 + 1 +2
         buff_2 = ((self.MW2/2)-(len(buff_1)/2))
         self.worker_cell(buff_1,23,25,buff_2,self.MW2,200,root_=root_page)
+        return None
 
     def mid_button_build(self):
 
@@ -277,6 +280,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
         }
         #print (self.MH2)
         self.worker_page_button(_val,w_func,**_style)
+        return None
 
     def worker_page_button(self,_text,_func,**_place):
         
@@ -290,6 +294,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
         )
         
         write_button.place (_place )  
+        return None
 
     def worker_cell(self,val,seq_row,total_row,seq_col,total_col,next_col,root_,bg_ = "white",col_=None,height_=None):
         r_click = False
@@ -357,13 +362,13 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
                         current_col = 'c_' + str(current_col) + '_'
                         _places.append(current_col)
                 else:
-                    None 
+                    pass 
                 for x_ in self.widgets_:
 
                     if x_.winfo_name() in _places:
                         _current.append(x_)
 
-                    None
+                    pass
                 for c_ in _current:
                     c_.configure(bg =__bg)
                     
@@ -372,7 +377,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
                 else:
                     self.prev = _current.copy()
                     #print(_current)
-                    None       
+                    pass       
                     
             def _lineout_out(event):
                     if r_click == True:
@@ -433,8 +438,6 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
             j += 1
         _list.append(buff)
         #print(_list)
-    
-    
     
         buff_2=self.seq_x[self.seq_x[0]+1]
         left_indent = 1
@@ -722,7 +725,6 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
         delete_button.place(x=x_position, y=y_position, width=delete_button_W, height=delete_button_h)
         return
 
-
 class db_control:
     def __init__(self,db_s):
         self.db_ = db_s
@@ -753,13 +755,13 @@ class db_control:
                         
                         result.append({j: i[j] for j in i})
                         #print (i) 
-                        None
+                        pass
                     else :
                         #raise ValueError("hataaa")
-                        None
+                        pass
                 except ValueError:
                     #print("hata var")
-                    None
+                    pass
                 #print(i[j])
                 
         if result ==[]:
@@ -780,13 +782,13 @@ class db_control:
                     #print(self.db_.index(i))
                     result = (self.db_.index(i))
                         #print (i) 
-                    None
+                    pass
                 else :
                         #raise ValueError("hataaa")
-                    None
+                    pass
             except ValueError:
                     #print("hata var")
-                None
+                pass
                                 
         if result ==[]:
             return None
@@ -806,10 +808,10 @@ class db_control:
                     if buff == kws:
                         result.append({j: i[j] for j in i})                        
                     else:
-                        None
+                        pass
                 except ValueError:
                     #print("hata var")
-                    None
+                    pass
                 #print(i[j])
         if result ==[]:
             return None
@@ -842,7 +844,7 @@ class db_control:
         with open(x_, 'w') as file:
             json.dump(self.db_, file,indent=2)
             #print(self.db_)
-        None
+        pass
  
     def val_check(self,val_control):
         try:
@@ -945,4 +947,3 @@ with open(x, 'r') as file:
     data = json.load(file)
 y = ProgX(data)
 y.main_start()
-

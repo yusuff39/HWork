@@ -131,6 +131,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
         self.senior_screen()
         
         self.root_x.mainloop()
+        return None
       
 #<senior screen> Basis screen. Data is printed on this screen. I don't want the window to close and open when I refresh the screen. 
 # That's why I defined the screen settings in a different function. Only data is printed in this function.
@@ -222,6 +223,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
         # 2 + 1 +2
         buff_2 = ((self.MW2/2)-(len(buff_1)/2))
         self.worker_cell(buff_1,23,25,buff_2,self.MW2,200,root_=root_page)
+        return None
 
     def mid_button_build(self):
 
@@ -279,6 +281,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
         }
         #print (self.MH2)
         self.worker_page_button(_val,w_func,**_style)
+        return None
 
     def worker_page_button(self,_text,_func,**_place):
         
@@ -292,6 +295,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
         )
         
         write_button.place (_place )  
+        return None
 
     def worker_cell(self,val,seq_row,total_row,seq_col,total_col,next_col,root_,bg_ = "white",col_=None,height_=None):
         r_click = False
@@ -397,7 +401,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
             _label.bind("<Motion>",_lineout_out)
             _label.bind("<Leave>",_leave)   
             _label.bind("<Button-3>", _right_click)
-
+          
     def senior_rename_screen(self,_current_r):
         add_s_mh = int(self.MH2/4)
         root_geometry = str(int(self.MW2)) + 'x' + str(add_s_mh)
@@ -486,8 +490,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
 
         def click_button():
             buff_ = {}
-            k=0
-            
+            k=0 
             for i in self.db_.zero_index_().keys():
                 if i =='id':
                     buff_[i] = int(self.re_val_[k].get())
@@ -700,7 +703,7 @@ When assigning length to any label, I assign it as seq_x[1 + (x.column)]
         x_position = (window_width // 2) - (delete_button_W // 2)
         y_position =int( (window_height // 2) + (delete_button_h // 5))
         delete_button.place(x=x_position, y=y_position, width=delete_button_W, height=delete_button_h)
-        return
+        return  None
 
 class db_control:
     def __init__(self,db_s):
@@ -757,7 +760,7 @@ class db_control:
         # with open(x_, 'w') as file:
         #     json.dump(self.db_, file,indent=2)
             #print(self.db_)
-        None
+        return None
  
     def val_check(self,val_control):
 
@@ -787,9 +790,7 @@ class db_control:
             result_ = self.collection_.find().skip((page_-1)*20).limit(20)
             #print(result_)
             #ress_ = self.custom_(result_)
-            
-
-            
+               
             result.append(self.custom_(result_))
             return result
         return page_
@@ -847,7 +848,7 @@ class db_control:
 
     def index_(self,x_):
         return self.db_[x_]
-        
+                
     def custom_(self,news_val):
         bff_ = []
         result_ = []
